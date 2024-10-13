@@ -16,9 +16,10 @@ const SideBar = ({ user }: SiderbarProps) => {
         <Link href="/" className="mb-12 cursor-pointer items-center gap-2">
           <Image
             src="/icons/logo.svg"
-            fill={true}
             alt="horizon logo"
-            className="size-[24px] max-xl:size-14 "
+            width={24}
+            height={24}
+            className="max-xl:w-14 max-xl:h-14 "
           />
           <h1 className=" sidebar-logo">Horizon</h1>
         </Link>
@@ -31,7 +32,7 @@ const SideBar = ({ user }: SiderbarProps) => {
               key={item.label}
               className={cn("sidebar-link ", { "bg-bank-gradient": isActive })}>
               <div className="relative size-6">
-                <Image src={item.imgURL} alt={item.label} className={cn({'brightness-[3] invert-0' : isActive})} />
+                <Image src={item.imgURL} width={24} height={24} alt={item.label} className={cn({'brightness-[3] invert-0' : isActive})} />
               </div>
               <p className={cn('sidebar-label',{
                 '!text-white':isActive
@@ -41,7 +42,9 @@ const SideBar = ({ user }: SiderbarProps) => {
             </Link>
           );
         })}
+        USER
       </nav>
+      FOOTER
     </section>
   );
 };

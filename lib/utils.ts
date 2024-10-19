@@ -195,12 +195,13 @@ export const getTransactionStatus = (date: Date) => {
 };
 import { z } from "zod";
 
-export const authformSchema = (type:string) =>
+export const authformSchema = (type: string) =>
   z.object({
     //sign up
     firstName: type === "sign-up" ? z.string().optional() : z.string().min(3),
     lastName: type === "sign-up" ? z.string().optional() : z.string().min(3),
     address1: type === "sign-up" ? z.string().optional() : z.string().max(50),
+    city: type === "sign-up" ? z.string().optional() : z.string().max(20),
     state:
       type === "sign-up" ? z.string().optional() : z.string().min(2).max(2),
     postalCode: z.string().min(3).max(6),

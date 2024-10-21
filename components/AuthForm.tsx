@@ -24,7 +24,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import CustomInput from "./custominput";
+import CustomInput from "./CustomInput";
 import { authformSchema } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -34,32 +34,32 @@ const AuthForm = ({ type }: { type: string }) => {
   const [isLoading, setIsLoading] = useState(false);
   // 1. Define your form.
   const formSchema = authformSchema(type);
-  const loggedInUser = await getLoggedInUser();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      password: "0",
+      password: "",
     },
   });
 
   // 2. Define a submit handler.
- async function onSubmit(data: z.infer<typeof formSchema>) {
+    const onSubmit = async (data: z.infer<typeof formSchema>)=> {
     setIsLoading(true);
     try {
       //sign up with appwrite
-      if (type === 'sign-up') {
+      if (type === "sign-up") {
         const newUser = await signUp(data);
         setUser(newUser);
       }
       if (type === "sign-in") {
-        // const response = await signIn({
-        //   email: data.email,
-        //   password: data.password,
-        // });
-        // if (response) router.push("/");
+        const response = await signIn({
+          email: data.email,
+          password: data.password,
+        });
+        if (response) router.push("/");
+        console.log(response);
       }
     } catch (error) {
       console.log(error);

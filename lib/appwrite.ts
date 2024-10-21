@@ -1,6 +1,7 @@
 "use server";
 import { Client, Account } from "node-appwrite";
 import { cookies } from "next/headers";
+import { Databases, Users } from "node-appwrite";
 
 export async function createSessionClient() {
   const client = new Client()
@@ -10,12 +11,12 @@ export async function createSessionClient() {
   const session = cookies().get("appwrite-session");
   if (!session || !session.value) {
     throw new Error("No session");
-  }
+  } 
 
   client.setSession(session.value);
 
   return {
-    get account() {
+    get Account() {
       return new Account(client);
     },
   };

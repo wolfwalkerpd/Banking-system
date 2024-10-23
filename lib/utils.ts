@@ -195,7 +195,7 @@ export const getTransactionStatus = (date: Date) => {
 };
 import { z } from "zod";
 
-export const authformSchema = (type: string) => {
+export const authformSchema = (type: string) => 
   z.object({
     //sign up
     firstName: type === "sign-in" ? z.string().optional() : z.string().min(3),
@@ -211,4 +211,3 @@ export const authformSchema = (type: string) => {
     email: z.string().email(),
     password: z.string().min(8),
   });
-};

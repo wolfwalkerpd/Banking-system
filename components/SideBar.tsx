@@ -6,10 +6,10 @@ import Image from "next/image";
 import { sidebarLinks } from "@/constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Footer from "./Footer";
 
 const SideBar = ({ user }: SiderbarProps) => {
   const pathname = usePathname();
-
   return (
     <section className=" sidebar">
       <nav className="flex flex-col gap-4">
@@ -44,7 +44,7 @@ const SideBar = ({ user }: SiderbarProps) => {
         })}
         USER
       </nav>
-      FOOTER
+      <Footer user={user} />
     </section>
   );
 };

@@ -3,7 +3,7 @@ import React from "react";
 function Footer ({ user, type = 'desktop' }: FooterProps) {
   return (
     <footer className="footer">
-      {/* <div className={type === "mobile" ? "footer_name-mobile" : "footer-name"}>
+      <div className={type === "mobile" ? "footer_name-mobile" : "footer-name"}>
         <p className=" text-xl font-bold text-gray-700">{user.name}</p>
       </div>
 
@@ -12,8 +12,7 @@ function Footer ({ user, type = 'desktop' }: FooterProps) {
         <h1 className="text-14 truncate font-normal text-gray-600">
           {user.name}
         </h1>
-      </div> */}
-      hi
+      </div>
     </footer>
   );
 };

@@ -4,25 +4,28 @@ import { getLoggedInUser } from "@/lib/actions/user.acations";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Image from "next/image";
-export default async function RootLayout({
+import { redirect } from "next/navigation";
+const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-
+}>) => {
   const loggedIn = await getLoggedInUser();
+
+  if (!loggedIn) redirect("/sign-in");
   return (
     <main className=" flex h-screen w-full font-inter">
       <SideBar user={loggedIn} />
-      <div className="flex size-full flex-col"> 
+      <div className="flex size-full flex-col">
         <div className="root-layout">
           <Image src="/icons/logo.svg" width={30} height={30} alt="Logo" />
           <div>
-            <MobileNavbar user={loggedIn} /> 
+            <MobileNavbar user={loggedIn} />
           </div>
         </div>
-      {children}
+        {children}
       </div>
     </main>
   );
-}
+};
+export default RootLayout;

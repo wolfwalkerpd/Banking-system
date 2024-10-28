@@ -28,6 +28,7 @@ import CustomInput from "./CustomInput";
 import { authformSchema } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import PlaidLink from "./PlaidLink";
 
 const AuthForm = ({ type }: { type: string }) => {
   const [user, setUser] = useState(null);
@@ -45,7 +46,7 @@ const AuthForm = ({ type }: { type: string }) => {
   });
 
   // 2. Define a submit handler.
-    const onSubmit = async (data: z.infer<typeof formSchema>)=> {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     try {
       //sign up with appwrite
@@ -66,7 +67,7 @@ const AuthForm = ({ type }: { type: string }) => {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
   return (
     <div>
       <section className="auth-form">
@@ -98,9 +99,11 @@ const AuthForm = ({ type }: { type: string }) => {
             </h1>
           </div>
         </header>
-        {user ? (
-          <div className=" flex flex-col gap-4">{/* plaid link */}</div>
-        ) : (
+        {/* {user ? ( */}
+          <div className=" flex flex-col gap-4">
+            <PlaidLink user={user} variant="primary" />
+          </div>
+        {/* ) : ( */}
           <section>
             <Form {...form}>
               <form
@@ -208,7 +211,7 @@ const AuthForm = ({ type }: { type: string }) => {
               </Link>
             </footer>
           </section>
-        )}
+        {/* )} */}
       </section>
     </div>
   );

@@ -4,7 +4,7 @@ import { ID } from "node-appwrite";
 import { createAdminClient, createSessionClient } from "../appwrite";
 import { cookies } from "next/headers";
 import { encryptId, extractCustomerIdFromUrl, parseStringify } from "../utils";
-import { plaidClient } from "../plaid";
+import { plaidClient } from "@/lib/plaid";
 import {
   CountryCode,
   ProcessorApexProcessorTokenCreateRequest,
@@ -169,6 +169,7 @@ export const exchangePublicToken = async ({
       access_token: accessToken,
     });
 
+
     const accountData = accountsResponse.data.accounts[0];
 
     const request: ProcessorTokenCreateRequest = {
@@ -187,7 +188,6 @@ export const exchangePublicToken = async ({
       processorToken,
       bankName: accountData.name,
     });
-
     if (!fundingSourceUrl) throw Error;
 
     await createBankAccount({

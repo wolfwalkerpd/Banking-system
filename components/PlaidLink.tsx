@@ -15,7 +15,9 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
 
         setToken(data?.linkToken);
     }
-  });
+
+    getLinkToken(); 
+  },[user]);
   const onSuccess = useCallback<PlaidLinkOnSuccess>(async (public_token: string) => {
     await exchangePublicToken({
         publicToken:public_token,
@@ -32,7 +34,9 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
     <>
       {variant === "primary" ? (
         <Button className="plaidlink-primary"
-        onClick={()=>open()}
+        onClick={()=>{
+          open()
+        }}
         disabled={!ready}
         >Connect bank</Button>
       ) : variant === "ghost" ? (

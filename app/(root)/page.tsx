@@ -29,7 +29,7 @@ const Home = async ({searchParams: {id, page}} : SearchParamProps) => {
           <HeaderBox
             type="greeting"
             title="welcome"
-            user={loggedIn?.name || "guest"}
+            user={loggedIn?.firstName || "guest"}
             subtext="Access and mange your account and transactions efficiently."
           />
           <TotalBalanceBox

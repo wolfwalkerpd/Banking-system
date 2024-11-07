@@ -33,7 +33,7 @@ declare type User = {
   dwollaCustomerId: string;
   firstName: string;
   lastName: string;
-  name:string;
+  name: string;
   address1: string;
   city: string;
   state: string;
@@ -60,7 +60,7 @@ declare type Account = {
   type: string;
   subtype: string;
   appwriteItemId: string;
-  sharableId: string;
+  shareableId: string;
 };
 
 declare type Transaction = {
@@ -78,8 +78,8 @@ declare type Transaction = {
   type: string;
   $createdAt: string;
   channel: string;
-  senderBankId: string;
-  receiverBankId: string;
+  senderbankId: string;
+  receiverbankId: string;
 };
 
 declare type Bank = {
@@ -89,7 +89,7 @@ declare type Bank = {
   accessToken: string;
   fundingSourceUrl: string;
   userId: string;
-  sharableId: string;
+  shareableId: string;
 };
 
 declare type AccountTypes =
@@ -210,7 +210,7 @@ declare interface TotlaBalanceBoxProps {
 }
 declare interface FooterProps {
   user: User;
-  type:'mobile' | 'desktop';
+  type: "mobile" | "desktop";
 }
 
 declare interface RightSidebarProps {
@@ -283,13 +283,13 @@ declare interface CreateTransactionProps {
   name: string;
   amount: string;
   senderId: string;
-  senderBankId: string;
+  senderbankId: string;
   receiverId: string;
-  receiverBankId: string;
+  receiverbankId: string;
   email: string;
 }
 
-declare interface getTransactionsByBankIdProps {
+declare interface getTransactionsBybankIdProps {
   bankId: string;
 }
 
@@ -313,7 +313,7 @@ declare interface createBankAccountProps {
   accountId: string;
   bankId: string;
   fundingSourceUrl: string;
-  sharableId: string;
+  shareableId: string;
 }
 
 declare interface getBanksProps {

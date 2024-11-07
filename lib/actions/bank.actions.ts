@@ -45,7 +45,7 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
           type: accountData.type as string,
           subtype: accountData.subtype! as string,
           appwriteItemId: bank.$id,
-          sharaebleId: bank.sharableId,
+          sharaebleId: bank.shareableId,
         };
 
         return account;
@@ -88,7 +88,7 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
         date: transferData.$createdAt,
         paymentChannel: transferData.channel,
         category: transferData.category,
-        type: transferData.senderBankId === bank.$id ? "debit" : "credit",
+        type: transferData.senderbankId === bank.$id ? "debit" : "credit",
       })
     );
 

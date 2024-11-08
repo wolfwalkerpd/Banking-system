@@ -41,13 +41,13 @@ export const getTransactionsByBankId = async ({
     const senderTransactions = await database.listDocuments(
       DATABASE_ID!,
       TRANSACTION_COLLECTION_ID!,
-      [Query.equal("senderbankId", bankId)]
+      [Query.equal("senderBankId", bankId)]
     );
 
     const receiverTransactions = await database.listDocuments(
       DATABASE_ID!,
       TRANSACTION_COLLECTION_ID!,
-      [Query.equal("receiverbankId", bankId)]
+      [Query.equal("receiverBankId", bankId)]
     );
 
     const transactions = {

@@ -13,7 +13,6 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
     userId: loggedIn.$id,
   });
 
-
   if (!accounts) return;
 
   const accountsData = accounts?.data;
@@ -39,14 +38,14 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
           />
         </header>
 
-        <RecentTransactions 
+        <RecentTransactions
           accounts={accountsData}
           transactions={account?.transactions}
           appwriteItemId={appwriteItemId}
           page={currentPage}
         />
       </div>
-
+        
       <RightSidebar
         user={loggedIn}
         transactions={account?.transactions}

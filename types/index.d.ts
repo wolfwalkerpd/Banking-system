@@ -78,8 +78,8 @@ declare type Transaction = {
   type: string;
   $createdAt: string;
   channel: string;
-  senderbankId: string;
-  receiverbankId: string;
+  senderBankId: string;
+  receiverBankId: string;
 };
 
 declare type Bank = {
@@ -127,14 +127,14 @@ declare type AddFundingSourceParams = {
 declare type NewDwollaCustomerParams = {
   firstName: string;
   lastName: string;
+  email: string;
+  type: string;
   address1: string;
   city: string;
   state: string;
   postalCode: string;
   dateOfBirth: string;
   ssn: string;
-  email: string;
-  password: string;
 };
 
 declare interface CreditCardProps {
@@ -203,14 +203,15 @@ declare interface BankTabItemProps {
   appwriteItemId?: string;
 }
 
-declare interface TotlaBalanceBoxProps {
+declare interface TotalBalanceBoxProps {
   accounts: Account[];
   totalBanks: number;
   totalCurrentBalance: number;
 }
+
 declare interface FooterProps {
   user: User;
-  type: "mobile" | "desktop";
+  type?: 'mobile' | 'desktop'
 }
 
 declare interface RightSidebarProps {
@@ -283,13 +284,13 @@ declare interface CreateTransactionProps {
   name: string;
   amount: string;
   senderId: string;
-  senderbankId: string;
+  senderBankId: string;
   receiverId: string;
-  receiverbankId: string;
+  receiverBankId: string;
   email: string;
 }
 
-declare interface getTransactionsBybankIdProps {
+declare interface getTransactionsByBankIdProps {
   bankId: string;
 }
 
